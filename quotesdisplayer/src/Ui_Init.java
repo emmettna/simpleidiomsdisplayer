@@ -6,40 +6,50 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class Ui_Init extends JFrame  {
-    JButton button;
+public class Ui_Init   {
+
     JLabel label;
     JLabel label2;
+    JButton button;
     JButton button2;
     JPanel panel;
-
-
-    
+    JFrame visibleFrame;
+    JFrame invisibleFrame;
+    Color color;
     Ui_Init(){
-//        Color c =new Color();
 
         label = new JLabel();
         label2 = new JLabel();
         button = new JButton("Check the meaning");
+        button.setOpaque(true);
         button2 = new JButton("Tap to see the next");
+        button2.setOpaque(true);
         panel = new JPanel();
-        add(panel);
+        visibleFrame = new JFrame();
+        invisibleFrame = new JFrame();
+        Font font = new Font("Savoye LET",Font.BOLD,25);
 
+        invisibleFrame.add(panel);
 
-        setUndecorated(true);  //In case youd like to hide the frame
-        getContentPane().setBackground(new Color(1.0f,1.0f,1.0f,0.5f));
-        setBackground(new Color(1.0f,1.0f,1.0f,0.5f));
+        visibleFrame.setUndecorated(false);
+        visibleFrame.getContentPane().setBackground(getTransparentColor(false));
+        visibleFrame.setBackground(getTransparentColor(false));
 
-//        JPanel container = new JPanel();
+        invisibleFrame.setUndecorated(true);  //In case youd like to hide the frame
+        invisibleFrame.getContentPane().setBackground(getTransparentColor(true));
+        invisibleFrame.setBackground(getTransparentColor(true));
+
         panel.setVisible(true);
         panel.setOpaque(false);
-        LayoutManager layout = new BoxLayout(panel, BoxLayout.PAGE_AXIS);
         panel.setLayout(null);
 
-        label.setBounds(10,30,200,15);
-        label2.setBounds(10,70,200,15);
-        button.setBounds(10,130,170,20);
-        button2.setBounds(10,130,170,20);
+        label.setFont(font);
+        label.setForeground(Color.WHITE);
+        label.setBounds(10,30,400,30);
+        label2.setBounds(10,70,300,30);
+        button.setBounds(250,110,140,20);
+        button2.setBounds(250,110,140,20);
+
 
         panel.add(label);
         panel.add(button);
@@ -48,6 +58,10 @@ public class Ui_Init extends JFrame  {
         panel.add(button2);
         button2.setVisible(false);
     }
-
+    private Color getTransparentColor(final boolean a){
+        if(a) color = new Color(1.0f,1.0f,1.0f,0.5f);
+        else color = new Color(1.0f,1.0f,1.0f,1.0f);
+        return color;
+    }
 
 }
