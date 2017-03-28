@@ -5,36 +5,41 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class Ui_Init extends JFrame {
+
+public class Ui_Init extends JFrame  {
     JButton button;
     JLabel label;
     JLabel label2;
     JButton button2;
+    JPanel panel;
+
+
     
     Ui_Init(){
-        label = new JLabel("Patience makes perfect"/*getQuotes()*/);
-        label2 = new JLabel("인내하는자만이 성공 할 수 있다");
-        button = new JButton("Tap to see the meaning");
-        button2 = new JButton("Next Quotes");
+//        Color c =new Color();
+
+        label = new JLabel();
+        label2 = new JLabel();
+        button = new JButton();
+        button2 = new JButton();
+        panel = new JPanel();
+        add(panel);
 
 
-        Container container = getContentPane();
-        SpringLayout layout = new SpringLayout();
-        container.setLayout(layout);
+        setUndecorated(true);  //In case youd like to hide the frame
+        getContentPane().setBackground(new Color(1.0f,1.0f,1.0f,0.0f));
+        setBackground(new Color(1.0f,1.0f,1.0f,0.0f));
+//        JPanel container = new JPanel();
+        panel.setVisible(true);
+        panel.setOpaque(false);
+        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 
-        layout.putConstraint(SpringLayout.WEST,label,50,SpringLayout.WEST,container);
-        layout.putConstraint(SpringLayout.NORTH,label,50,SpringLayout.NORTH,container);
-        container.add(label);
-        layout.putConstraint(SpringLayout.WEST,button,50,SpringLayout.WEST,container);
-        layout.putConstraint(SpringLayout.NORTH,button,100,SpringLayout.NORTH,container);
-        container.add(button);
-        layout.putConstraint(SpringLayout.WEST,label2,50,SpringLayout.WEST,container);
-        layout.putConstraint(SpringLayout.NORTH,label2,100,SpringLayout.NORTH,container);
-        container.add(label2);
+
+        panel.add(label);
+        panel.add(button);
+        panel.add(label2);
         label2.setVisible(false);
-        layout.putConstraint(SpringLayout.WEST,button2,50,SpringLayout.WEST,container);
-        layout.putConstraint(SpringLayout.NORTH,button2,120,SpringLayout.NORTH,container);
-        container.add(button2);
+        panel.add(button2);
         button2.setVisible(false);
 
     }

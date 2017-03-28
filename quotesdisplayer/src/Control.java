@@ -10,10 +10,12 @@ public class Control {
     private Ui_Init ui = new Ui_Init();
     private FileInput fi;
     Control(){
+        fi = new FileInput();
         ui.setTitle("Quotes Displayer");
         ui.setBounds(200,250,300,200);
         ui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ui.setVisible(true);
+        generateIdioms();
         ui.button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -28,7 +30,7 @@ public class Control {
                 tapNextButton();
             }
         });
-        fi = new FileInput();
+
     }
     private int randomNumber(){
         final int randomNum = ThreadLocalRandom.current().nextInt(0,fi.list.size());
