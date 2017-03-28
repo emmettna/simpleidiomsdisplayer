@@ -20,20 +20,26 @@ public class Ui_Init extends JFrame  {
 
         label = new JLabel();
         label2 = new JLabel();
-        button = new JButton();
-        button2 = new JButton();
+        button = new JButton("Check the meaning");
+        button2 = new JButton("Tap to see the next");
         panel = new JPanel();
         add(panel);
 
 
         setUndecorated(true);  //In case youd like to hide the frame
-        getContentPane().setBackground(new Color(1.0f,1.0f,1.0f,0.0f));
-        setBackground(new Color(1.0f,1.0f,1.0f,0.0f));
+        getContentPane().setBackground(new Color(1.0f,1.0f,1.0f,0.5f));
+        setBackground(new Color(1.0f,1.0f,1.0f,0.5f));
+
 //        JPanel container = new JPanel();
         panel.setVisible(true);
         panel.setOpaque(false);
-        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+        LayoutManager layout = new BoxLayout(panel, BoxLayout.PAGE_AXIS);
+        panel.setLayout(null);
 
+        label.setBounds(10,30,200,15);
+        label2.setBounds(10,70,200,15);
+        button.setBounds(10,130,170,20);
+        button2.setBounds(10,130,170,20);
 
         panel.add(label);
         panel.add(button);
@@ -41,7 +47,7 @@ public class Ui_Init extends JFrame  {
         label2.setVisible(false);
         panel.add(button2);
         button2.setVisible(false);
-
     }
+
 
 }

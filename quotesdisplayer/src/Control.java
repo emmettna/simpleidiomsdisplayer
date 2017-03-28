@@ -1,6 +1,9 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
@@ -12,9 +15,10 @@ public class Control {
     Control(){
         fi = new FileInput();
         ui.setTitle("Quotes Displayer");
-        ui.setBounds(200,250,300,200);
+        ui.setBounds(100,150,300,200);
         ui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ui.setVisible(true);
+
         generateIdioms();
         ui.button.addActionListener(new ActionListener() {
             @Override
@@ -28,6 +32,18 @@ public class Control {
             @Override
             public void actionPerformed(ActionEvent e) {
                 tapNextButton();
+            }
+        });
+        ui.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                System.out.println(ui.isUndecorated());
+                System.out.println(ui.isDisplayable());
+                if(ui.isDisplayable()) ;
+                if(ui.isUndecorated()) frameSwitch() ;
+                if(!ui.isDisplayable()) ui.addNotify();
+
+
             }
         });
 
@@ -52,6 +68,16 @@ public class Control {
         ui.label2.setVisible(false);
         ui.button2.setVisible(false);
         generateIdioms();
+    }
+    private void frameSwitch(){
+
+        ui.getContentPane().setBackground(new Color(1.0f,1.0f,1.0f,1f));
+        ui.setBackground(new Color(1.0f,1.0f,1.0f,1f));
+        ui.setUndecorated(false);
+
+
+
+
     }
 
 }
