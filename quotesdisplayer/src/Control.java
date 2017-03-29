@@ -4,7 +4,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.TimerTask;
 import java.util.concurrent.ThreadLocalRandom;
 import javax.swing.Timer;
 
@@ -14,14 +13,16 @@ import javax.swing.Timer;
 public class Control extends Thread {
     private Ui_Init ui = new Ui_Init();
     private FileInput fi;
-    int count;
+    private int _height, _width;
     private Timer t, t2;
-    Control() {
-        count = 100;
-        fi = new FileInput();
-        generateIdioms();
 
-        ui.invisibleFrame.setBounds(70,80,400,100);
+    Control() {
+        _width = 400;
+        _height = 100;
+        fi = new FileInput();
+        ui.panel.repaint();
+        generateIdioms();
+        ui.invisibleFrame.setBounds(70, 30,_width,_height);
         ui.invisibleFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ui.invisibleFrame.setVisible(true);
 
@@ -29,7 +30,7 @@ public class Control extends Thread {
         ui.visibleFrame.setBounds(ui.invisibleFrame.getBounds());
         ui.visibleFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ui.visibleFrame.setVisible(false);
-        _setButtonColor(Color.WHITE,Color.BLACK,Color.GRAY);
+        _setButtonColor(ui.getTransparentColor(true),Color.BLACK,Color.GRAY);
 
         ui.button.addActionListener(new ActionListener() {
 
@@ -54,9 +55,8 @@ public class Control extends Thread {
                 t.start();
                 ui.visibleFrame.add(ui.panel);
                 _frameInvisible(true, Color.BLACK);
-                _setButtonColor(Color.WHITE, Color.BLACK, Color.GRAY);
+                _setButtonColor(ui.getTransparentColor(true), Color.BLACK, Color.BLACK);
             }});
-
         ui.visibleFrame.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseExited(MouseEvent e) {
@@ -66,8 +66,8 @@ public class Control extends Thread {
                 ui.invisibleFrame.setLocation(ui.visibleFrame.getLocation());
                 ui.invisibleFrame.setSize(ui.visibleFrame.getSize());
                 ui.invisibleFrame.add(ui.panel);
-                _frameInvisible(false,Color.BLUE);
-                _setButtonColor(new Color(1.0f,1.0f,1.0f,0.23f),Color.WHITE,Color.WHITE);
+                _frameInvisible(false,Color.BLACK);
+                _setButtonColor(ui.getTransparentColor(true),Color.BLACK,Color.BLACK);
 
             }
         });
@@ -77,34 +77,32 @@ public class Control extends Thread {
                 super.mouseEntered(e);
                 if(t2.isRunning())t2.stop();
                 t.start();
-                ui.invisibleFrame.setLocation(ui.visibleFrame.getLocation());
-                ui.invisibleFrame.add(ui.panel);
-                _frameInvisible(false,Color.WHITE);
-                _setButtonColor(new Color(1.0f,1.0f,1.0f,0.23f),Color.WHITE,Color.WHITE);
+                ui.visibleFrame.add(ui.panel);
+                _frameInvisible(true, Color.BLACK);
+                _setButtonColor(ui.getTransparentColor(true), Color.BLACK, Color.BLACK);
 
             }
         });
         ui.button2.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseEntered(MouseEvent e) {
+            public void mouseExited(MouseEvent e) {
                 super.mouseEntered(e);
                 if(t2.isRunning())t2.stop();
                 t.start();
             }
         });
-//        System.out.println(dim)
         t = new Timer(20, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(count<150){
-                ui.visibleFrame.setSize(400, count);
-                ui.invisibleFrame.setSize(400,count);
+                if(_height <150){
+                ui.visibleFrame.setSize(_width, _height);
+                ui.invisibleFrame.setSize(_width, _height);
                 System.out.println("getting bigger");
-                count += 3;}
-                if(count>=150){
+                _height += 3;}
+                if(_height >=150){
                     ((Timer)e.getSource()).stop();
-                    System.out.println(count);
-                    count=150;
+                    System.out.println(_height);
+                    _height =150;
 
                 }
             }
@@ -112,15 +110,15 @@ public class Control extends Thread {
         t2 = new Timer(20, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(count>100){
-                    ui.visibleFrame.setSize(400, count);
-                    ui.invisibleFrame.setSize(400,count);
+                if(_height >100){
+                    ui.visibleFrame.setSize(_width, _height);
+                    ui.invisibleFrame.setSize(_width, _height);
                     System.out.println("getting smaller");
-                    count -= 3;}
-                if(count<=100){
+                    _height -= 3;}
+                if(_height <=100){
                     ((Timer)e.getSource()).stop();
-                    System.out.println(count);
-                    count=100;
+                    System.out.println(_height);
+                    _height =100;
 
                 }
             }
@@ -140,6 +138,8 @@ public class Control extends Thread {
 
         ui.label.setForeground(labelcolor);
         ui.label2.setForeground(labelcolor);
+        ui.label3.setForeground(Color.BLACK);
+        ui.label3.setBackground(new Color(0,0,0,0));
         ui.invisibleFrame.setVisible(!yes);
         ui.visibleFrame.setVisible(yes);
         _setLocation(!yes);
@@ -148,12 +148,12 @@ public class Control extends Thread {
     private void _setLocation(final boolean a) {
         final int b = 22;
         if (a) {
-            ui.label.setLocation(10, 30);
+            ui.label.setLocation(10,22);
             ui.label2.setLocation(10, 70);
             ui.button.setLocation(250, 110);
             ui.button2.setLocation(250, 110);
         } else {
-            ui.label.setLocation(10, 30 - b);
+            ui.label.setLocation(10, 0);
             ui.label2.setLocation(10, 70 - b);
             ui.button.setLocation(250, 110 - b);
             ui.button2.setLocation(250, 110 - b);
@@ -161,25 +161,28 @@ public class Control extends Thread {
 
     }
     private int randomNumber(){
-        final int randomNum = ThreadLocalRandom.current().nextInt(0,fi.list.size());
+        final int randomNum = ThreadLocalRandom.current().nextInt(0,fi.getList().size());
         return randomNum;
     }
     //If statement kinda stinks We gonna get back to this later.
     private void generateIdioms() {
-        int rn = randomNumber()%fi.list.size();
+        int rn = randomNumber()%fi.getList().size();
         if(rn%2!=0){
             rn -= 1;
             if(rn == rn)
                 generateIdioms();
         }
         System.out.println(rn);
-        ui.label.setText(fi.list.get(rn));
-        ui.label2.setText(fi.list.get(rn + 1));
+        System.out.println(fi.getList().get(rn).toString());// When the line is too long, it needs to down under
+        ui.label.setText(fi.getList().get(rn));
+//        ui.label3.setText();
+        ui.label2.setText(fi.getList().get(rn + 1));
         }
     private void tapNextButton(){
-//        generateIdioms();
-        ui.label.setText(fi.list.get(244));
-        ui.label2.setText(fi.list.get(245));
+        generateIdioms();
+//        ui.label.setText(fi.getList().get(244));
+//        ui.label2.setText(fi.getList().get(245));
+//        ui.label3.setText(fi.getList().get(244));
         ui.label.setVisible(true);
         ui.button.setVisible(true);
         ui.label2.setVisible(false);

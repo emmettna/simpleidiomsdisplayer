@@ -6,28 +6,25 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class Ui_Init   {
+public class Ui_Init {
 
-    JLabel label;
-    JLabel label2;
-    JButton button;
-    JButton button2;
-    JPanel panel;
-    JFrame visibleFrame;
-    JFrame invisibleFrame;
-    Color color;
+    public JLabel label, label2,label3;
+    public JButton button, button2;
+    public ImagePanel panel;
+    public JFrame visibleFrame, invisibleFrame;
+    private Color color;
     Ui_Init(){
-
+        label3 = new JLabel();
         label = new JLabel();
         label2 = new JLabel();
         button = new JButton("Check the meaning");
-        button.setOpaque(true);
+//        button.setOpaque(true);
         button2 = new JButton("Tap to see the next");
-        button2.setOpaque(true);
-        panel = new JPanel();
+//        button2.setOpaque(true);
+        panel = new ImagePanel();
         visibleFrame = new JFrame();
         invisibleFrame = new JFrame();
-        Font font = new Font("Savoye LET",Font.BOLD,25);
+        Font font = new Font("Chalkboard",Font.PLAIN,16);
 
         invisibleFrame.add(panel);
 
@@ -45,7 +42,7 @@ public class Ui_Init   {
 
         label.setFont(font);
         label.setForeground(Color.WHITE);
-        label.setBounds(10,30,400,30);
+        label.setBounds(10,20,400,30);
         label2.setBounds(10,70,300,30);
         button.setBounds(250,110,140,20);
         button2.setBounds(250,110,140,20);
@@ -54,11 +51,12 @@ public class Ui_Init   {
         panel.add(label);
         panel.add(button);
         panel.add(label2);
+        panel.add(label3);
         label2.setVisible(false);
         panel.add(button2);
         button2.setVisible(false);
     }
-    private Color getTransparentColor(final boolean a){
+    public Color getTransparentColor(final boolean a){
         if(a) color = new Color(1.0f,1.0f,1.0f,0.5f);
         else color = new Color(1.0f,1.0f,1.0f,1.0f);
         return color;
