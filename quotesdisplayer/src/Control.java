@@ -4,25 +4,23 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.TimerTask;
 import java.util.concurrent.ThreadLocalRandom;
 import javax.swing.Timer;
 
 /**
  * Created by emmettna on 24/3/17.
  */
-public class Control {
+public class Control extends Thread {
     private Ui_Init ui = new Ui_Init();
     private FileInput fi;
-    private Dimension dim;
     int count;
-    private Timer t;
-
+    private Timer t, t2;
     Control() {
         count = 100;
-
         fi = new FileInput();
         generateIdioms();
-        dim = new Dimension(400,150);
+
         ui.invisibleFrame.setBounds(70,80,400,100);
         ui.invisibleFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ui.invisibleFrame.setVisible(true);
@@ -46,14 +44,14 @@ public class Control {
             @Override
             public void actionPerformed(ActionEvent e) {
                 tapNextButton();
+
             }
         });
         ui.invisibleFrame.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-//                if(count<=150){
-//                t.start();}
-                
+                if(t2.isRunning())t2.stop();
+                t.start();
                 ui.visibleFrame.add(ui.panel);
                 _frameInvisible(true, Color.BLACK);
                 _setButtonColor(Color.WHITE, Color.BLACK, Color.GRAY);
@@ -63,16 +61,13 @@ public class Control {
             @Override
             public void mouseExited(MouseEvent e) {
                 super.mouseExited(e);
-//                if(count>100){
-//                t.start();}
-
-                ui.visibleFrame.setSize(400,count);
+                if(t.isRunning())t.stop();
+                t2.start();
                 ui.invisibleFrame.setLocation(ui.visibleFrame.getLocation());
                 ui.invisibleFrame.setSize(ui.visibleFrame.getSize());
                 ui.invisibleFrame.add(ui.panel);
-                _frameInvisible(false,Color.WHITE);
+                _frameInvisible(false,Color.BLUE);
                 _setButtonColor(new Color(1.0f,1.0f,1.0f,0.23f),Color.WHITE,Color.WHITE);
-
 
             }
         });
@@ -80,7 +75,8 @@ public class Control {
             @Override
             public void mouseEntered(MouseEvent e) {
                 super.mouseEntered(e);
-//                t.start();
+                if(t2.isRunning())t2.stop();
+                t.start();
                 ui.invisibleFrame.setLocation(ui.visibleFrame.getLocation());
                 ui.invisibleFrame.add(ui.panel);
                 _frameInvisible(false,Color.WHITE);
@@ -88,7 +84,48 @@ public class Control {
 
             }
         });
+        ui.button2.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                super.mouseEntered(e);
+                if(t2.isRunning())t2.stop();
+                t.start();
+            }
+        });
 //        System.out.println(dim)
+        t = new Timer(20, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(count<150){
+                ui.visibleFrame.setSize(400, count);
+                ui.invisibleFrame.setSize(400,count);
+                System.out.println("getting bigger");
+                count += 3;}
+                if(count>=150){
+                    ((Timer)e.getSource()).stop();
+                    System.out.println(count);
+                    count=150;
+
+                }
+            }
+        });
+        t2 = new Timer(20, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(count>100){
+                    ui.visibleFrame.setSize(400, count);
+                    ui.invisibleFrame.setSize(400,count);
+                    System.out.println("getting smaller");
+                    count -= 3;}
+                if(count<=100){
+                    ((Timer)e.getSource()).stop();
+                    System.out.println(count);
+                    count=100;
+
+                }
+            }
+        });
+
     }
     private void _setButtonColor(final Color background,final Color border,final Color foreground){
 
