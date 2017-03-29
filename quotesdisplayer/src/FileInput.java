@@ -9,16 +9,15 @@ import java.util.Scanner;
  */
 public class FileInput {
 
-    List<String> list;
-
+    private List<String> list;
     FileInput() {
         try {
+
             list = new ArrayList<>();
-            File path = new File("/Users/emmettna/Downloads/Scala/Quotesdisplayer/out/production/quotesdisplayer/idioms");
             File filepath = new File("idioms");
             // Relative location needs to be set
-           Scanner sc = new Scanner(path);
-            while(sc.hasNext()) {
+            Scanner sc = new Scanner(filepath);
+            while (sc.hasNext()) {
                 String line = sc.nextLine();
                 String[] array = line.split(":");
                 String english = array[0];
@@ -26,11 +25,12 @@ public class FileInput {
                 list.add(english);
                 list.add(korean);
             }
-        }
-        catch(FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
     }
-
+    public List<String> getList(){
+        return list;
+    }
 }
 
