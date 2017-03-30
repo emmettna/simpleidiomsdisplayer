@@ -12,7 +12,6 @@ public class FileInput {
     private List<String> list;
     FileInput() {
         try {
-
             list = new ArrayList<>();
             File filepath = new File("idioms");
             Scanner sc = new Scanner(filepath);
