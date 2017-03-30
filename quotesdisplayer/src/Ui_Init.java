@@ -8,19 +8,19 @@ import java.awt.*;
 
 public class Ui_Init {
 
-    public JLabel label, label2,label3;
+    public JLabel label, label2, label3, buttonLabel1, buttonLabel2;
     public JButton button, button2;
     public ImagePanel panel;
     public JFrame visibleFrame, invisibleFrame;
     private Color color;
     Ui_Init(){
-        label3 = new JLabel();
         label = new JLabel();
+        label3 = new JLabel();
         label2 = new JLabel();
+        buttonLabel1 = new JLabel("Check the meaning");
+        buttonLabel2 = new JLabel("Tap to for Next");
         button = new JButton("Check the meaning");
-//        button.setOpaque(true);
         button2 = new JButton("Tap to see the next");
-//        button2.setOpaque(true);
         panel = new ImagePanel();
         visibleFrame = new JFrame();
         invisibleFrame = new JFrame();
@@ -43,6 +43,9 @@ public class Ui_Init {
         label.setFont(font);
         label.setForeground(Color.WHITE);
         label.setBounds(10,20,400,30);
+        label3.setBounds(10,25,400,30);
+        label3.setForeground(Color.WHITE);
+        label3.setFont(font);
         label2.setBounds(10,70,300,30);
         button.setBounds(250,110,140,20);
         button2.setBounds(250,110,140,20);

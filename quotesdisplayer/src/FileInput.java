@@ -15,7 +15,6 @@ public class FileInput {
 
             list = new ArrayList<>();
             File filepath = new File("idioms");
-            // Relative location needs to be set
             Scanner sc = new Scanner(filepath);
             while (sc.hasNext()) {
                 String line = sc.nextLine();
