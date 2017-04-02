@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="quotesdisplayer:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="894975f0-56cd-4223-99a4-c3921cfd6588" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,8 +23,8 @@
       <file leaf-file-name="Control.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/quotesdisplayer/src/Control.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state relative-caret-position="105">
+              <caret line="50" column="46" lean-forward="true" selection-start-line="50" selection-start-column="46" selection-end-line="50" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#531#833#0" expanded="true" />
@@ -28,10 +33,10 @@
                 <element signature="e#1065#1066#0" expanded="true" />
                 <element signature="e#1112#2223#0" expanded="true" />
                 <element signature="e#2222#2223#0" expanded="true" />
-                <element signature="e#2269#2807#0" expanded="true" />
-                <element signature="e#2806#2807#0" expanded="true" />
-                <element signature="e#2851#3566#0" expanded="true" />
-                <element signature="e#3565#3566#0" expanded="true" />
+                <element signature="e#2690#3228#0" expanded="true" />
+                <element signature="e#3227#3228#0" expanded="true" />
+                <element signature="e#3272#3987#0" expanded="true" />
+                <element signature="e#3986#3987#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -60,11 +65,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FileInput.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FileInput.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/quotesdisplayer/src/FileInput.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="38" lean-forward="false" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
+            <state relative-caret-position="375">
+              <caret line="25" column="43" lean-forward="true" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#827#828#0" expanded="true" />
@@ -74,11 +79,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Ui_Init.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Ui_Init.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/quotesdisplayer/src/Ui_Init.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="671">
-              <caret line="77" column="5" lean-forward="true" selection-start-line="77" selection-start-column="5" selection-end-line="77" selection-end-column="5" />
+            <state relative-caret-position="330">
+              <caret line="24" column="47" lean-forward="false" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
@@ -148,17 +153,17 @@
         <option value="$PROJECT_DIR$/quotesdisplayer/src/SlidingFrameThread.java" />
         <option value="$PROJECT_DIR$/colorchooser/src/ColorChooserDemo.java" />
         <option value="$PROJECT_DIR$/quotesdisplayer/src/idioms" />
-        <option value="$PROJECT_DIR$/quotesdisplayer/src/Control.java" />
         <option value="$PROJECT_DIR$/quotesdisplayer/src/MainClass.java" />
-        <option value="$PROJECT_DIR$/quotesdisplayer/src/ImagePanel.java" />
+        <option value="$PROJECT_DIR$/quotesdisplayer/src/Control.java" />
         <option value="$PROJECT_DIR$/quotesdisplayer/src/Ui_Init.java" />
         <option value="$PROJECT_DIR$/quotesdisplayer/src/FileInput.java" />
+        <option value="$PROJECT_DIR$/quotesdisplayer/src/ImagePanel.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="22" />
-    <option name="y" value="92" />
+    <option name="x" value="-13" />
+    <option name="y" value="56" />
     <option name="width" value="1400" />
     <option name="height" value="765" />
   </component>
@@ -197,8 +202,8 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Project" />
-    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="SearchEverywhereHistoryKey" value="sysoutprintln&#9;null&#9;null" />
@@ -529,7 +534,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="22" y="92" width="1400" height="765" extended-state="0" />
+    <frame x="-13" y="56" width="1400" height="765" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -588,10 +593,10 @@
             <element signature="e#1065#1066#0" expanded="true" />
             <element signature="e#1112#2223#0" expanded="true" />
             <element signature="e#2222#2223#0" expanded="true" />
-            <element signature="e#2269#2807#0" expanded="true" />
-            <element signature="e#2806#2807#0" expanded="true" />
-            <element signature="e#2851#3566#0" expanded="true" />
-            <element signature="e#3565#3566#0" expanded="true" />
+            <element signature="e#2690#3228#0" expanded="true" />
+            <element signature="e#3227#3228#0" expanded="true" />
+            <element signature="e#3272#3987#0" expanded="true" />
+            <element signature="e#3986#3987#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -651,10 +656,10 @@
             <element signature="e#1065#1066#0" expanded="true" />
             <element signature="e#1112#2223#0" expanded="true" />
             <element signature="e#2222#2223#0" expanded="true" />
-            <element signature="e#2269#2807#0" expanded="true" />
-            <element signature="e#2806#2807#0" expanded="true" />
-            <element signature="e#2851#3566#0" expanded="true" />
-            <element signature="e#3565#3566#0" expanded="true" />
+            <element signature="e#2690#3228#0" expanded="true" />
+            <element signature="e#3227#3228#0" expanded="true" />
+            <element signature="e#3272#3987#0" expanded="true" />
+            <element signature="e#3986#3987#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -738,10 +743,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/quotesdisplayer/src/Ui_Init.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="24" column="47" lean-forward="false" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/quotesdisplayer/src/Control.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        <state relative-caret-position="105">
+          <caret line="50" column="46" lean-forward="true" selection-start-line="50" selection-start-column="46" selection-end-line="50" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#531#833#0" expanded="true" />
@@ -750,10 +766,10 @@
             <element signature="e#1065#1066#0" expanded="true" />
             <element signature="e#1112#2223#0" expanded="true" />
             <element signature="e#2222#2223#0" expanded="true" />
-            <element signature="e#2269#2807#0" expanded="true" />
-            <element signature="e#2806#2807#0" expanded="true" />
-            <element signature="e#2851#3566#0" expanded="true" />
-            <element signature="e#3565#3566#0" expanded="true" />
+            <element signature="e#2690#3228#0" expanded="true" />
+            <element signature="e#3227#3228#0" expanded="true" />
+            <element signature="e#3272#3987#0" expanded="true" />
+            <element signature="e#3986#3987#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -771,23 +787,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/quotesdisplayer/src/FileInput.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="38" lean-forward="false" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
+        <state relative-caret-position="375">
+          <caret line="25" column="43" lean-forward="true" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#827#828#0" expanded="true" />
             <element signature="e#854#855#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/quotesdisplayer/src/Ui_Init.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="671">
-          <caret line="77" column="5" lean-forward="true" selection-start-line="77" selection-start-column="5" selection-end-line="77" selection-end-column="5" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -798,10 +803,12 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
+          <last-edited>quotesdisplayer:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -844,10 +851,12 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
+          <last-edited>quotesdisplayer</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
                 <option value="0.2" />
+                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

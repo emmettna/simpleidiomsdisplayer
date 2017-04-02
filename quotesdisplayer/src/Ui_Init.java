@@ -12,6 +12,7 @@ public class Ui_Init {
     public JButton meaningButton, nextButton, previousButton;
     public ImagePanel panel;
     public JFrame visibleFrame, invisibleFrame;
+    public JCheckBox alwaysOnTopButton;
     private Color color;
 
     Ui_Init(){
@@ -21,6 +22,7 @@ public class Ui_Init {
         meaningButton = new JButton("Check the meaning");
         nextButton = new JButton("Tap to for Next");
         previousButton = new JButton("Back to Previous");
+        alwaysOnTopButton = new JCheckBox("Stay on Top");
         panel = new ImagePanel();
         visibleFrame = new JFrame();
         invisibleFrame = new JFrame();
@@ -52,6 +54,7 @@ public class Ui_Init {
         meaningButton.setBounds(250,110,140,20);
         nextButton.setBounds(250,110,140,20);
         previousButton.setBounds(24,110,140,20);
+        alwaysOnTopButton.setBounds(270,60,140,20);
 
         panel.add(label);
         panel.add(label2);
@@ -59,9 +62,11 @@ public class Ui_Init {
         panel.add(meaningButton);
         panel.add(nextButton);
         panel.add(previousButton);
+        panel.add(alwaysOnTopButton);
         label2.setVisible(false);
         nextButton.setVisible(false);
         previousButton.setVisible(true);
+        alwaysOnTopButton.setVisible(false);
         panel.repaint();
         invisibleFrame.setTitle("Quotes Displayer");
         invisibleFrame.setBounds(70, 30,400,100);
@@ -99,6 +104,7 @@ public class Ui_Init {
         label3.setForeground(Color.BLACK);
         invisibleFrame.setVisible(!yes);
         visibleFrame.setVisible(yes);
+        alwaysOnTopButton.setVisible(yes);
         _setLocation(!yes);
     }
     public void _setLocation(final boolean a) {

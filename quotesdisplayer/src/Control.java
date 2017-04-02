@@ -16,7 +16,7 @@ public class Control extends Thread {
         queue = new ArrayList();
         fi = new FileInput();
         generateIdioms();
-//        setIntervalTime(1000);
+        setIntervalTime(300000);
         ui.meaningButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -59,6 +59,18 @@ public class Control extends Thread {
                 }
 
 
+            }
+        });
+        ui.alwaysOnTopButton.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if(ui.alwaysOnTopButton.isSelected()){
+                    _setAlwaysOnTop(true);
+                }
+                else{
+                    _setAlwaysOnTop(false);
+                    System.out.println("clicked");
+                }
             }
         });
         ui.invisibleFrame.addMouseListener(new MouseAdapter() {
@@ -121,12 +133,6 @@ public class Control extends Thread {
                 }
             }
         });
-//        t3 = new Timer(50000, new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                tapNextButton();
-//            }
-//        });
     }
 
     //If statement kinda stinks We gonna get back to this later.
@@ -167,17 +173,30 @@ public class Control extends Thread {
             ui.label3.setText("20개 까지만 지원 됩니다");
         }
     }
-    /* not working at the moment*/
-//    private void setIntervalTime(final int a){
-//        System.out.println("got setintervaltime");
-//
-//        t3 = new Timer(a, new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                System.out.println("got here");
-//                tapNextButton();
-//            }
-//        });
-//
-//    }
+    /* setTime button will be added soon */
+    private void setIntervalTime(final int a){
+        System.out.println("got setintervaltime");
+
+            t3 = new Timer(a, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("got here");
+                tapNextButton();
+            }
+
+        });
+            if(!t3.isRunning())t3.start();
+
+    }
+    private void _setAlwaysOnTop(boolean a){
+        if (a){
+            ui.visibleFrame.setAlwaysOnTop(a);
+            ui.invisibleFrame.setAlwaysOnTop(a);
+        }
+        else{
+            ui.visibleFrame.setAlwaysOnTop(a);
+            ui.invisibleFrame.setAlwaysOnTop(a);
+        }
+
+    }
 }
