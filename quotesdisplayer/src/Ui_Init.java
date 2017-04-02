@@ -4,12 +4,12 @@
 
 import javax.swing.*;
 import java.awt.*;
-
+import com.apple.eawt.Application;
 
 public class Ui_Init {
 
     public JLabel label, label2, label3;
-    public JButton button, button2;
+    public JButton meaningButton, nextButton, previousButton;
     public ImagePanel panel;
     public JFrame visibleFrame, invisibleFrame;
     private Color color;
@@ -18,28 +18,14 @@ public class Ui_Init {
         label = new JLabel();
         label3 = new JLabel();
         label2 = new JLabel();
-        button = new JButton("Check the meaning");
-        button2 = new JButton("Tap to for Next");
+        meaningButton = new JButton("Check the meaning");
+        nextButton = new JButton("Tap to for Next");
+        previousButton = new JButton("Back to Previous");
         panel = new ImagePanel();
         visibleFrame = new JFrame();
         invisibleFrame = new JFrame();
 
         Font font = new Font("Chalkboard",Font.PLAIN,16);
-
-
-        /* None of these work X_x */
-
-
-//        invisibleFrame.setIconImage();
-//        Toolkit.getDefaultToolkit().getImage(MainClass.class.getResource("cute img icon.jpg"));
-//        try{
-//            Image image = new ImageIcon("cute img icon.jpg").getImage();
-//            invisibleFrame.setIconImage(image);
-//            visibleFrame.setIconImage(image);
-//        }catch(Exception e){
-//            System.out.println("Appilcation icon not found");
-//        }
-//        java.net.URL url = ClassLoader.getSystemResource("cute img icon.jpg");
 
 
         invisibleFrame.add(panel);
@@ -59,26 +45,33 @@ public class Ui_Init {
         label.setFont(font);
         label.setForeground(Color.BLACK);
         label.setBounds(10,20,400,30);
-        label3.setBounds(10,25,400,30);
+        label3.setBounds(10,47,400,30);
         label3.setForeground(Color.BLACK);
         label3.setFont(font);
         label2.setBounds(10,70,300,30);
-        button.setBounds(250,110,140,20);
-        button2.setBounds(250,110,140,20);
+        meaningButton.setBounds(250,110,140,20);
+        nextButton.setBounds(250,110,140,20);
+        previousButton.setBounds(24,110,140,20);
 
         panel.add(label);
         panel.add(label2);
         panel.add(label3);
-        panel.add(button);
-        panel.add(button2);
+        panel.add(meaningButton);
+        panel.add(nextButton);
+        panel.add(previousButton);
         label2.setVisible(false);
-        button2.setVisible(false);
+        nextButton.setVisible(false);
+        previousButton.setVisible(true);
         panel.repaint();
+        invisibleFrame.setTitle("Quotes Displayer");
         invisibleFrame.setBounds(70, 30,400,100);
+        Application.getApplication().setDockIconImage(new ImageIcon(getClass().getResource("iconimage.png")).getImage());
+        invisibleFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("iconimage.png")));
         invisibleFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         invisibleFrame.setVisible(true);
         visibleFrame.setTitle("Quotes Displayer");
         visibleFrame.setBounds(70, 30,400,100);
+        visibleFrame.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("iconimage.png")));
         visibleFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         visibleFrame.setVisible(false);
         _setButtonColor();
@@ -89,12 +82,15 @@ public class Ui_Init {
         return color;
     }
     public void _setButtonColor(){
-        button.setBackground(getTransparentColor(true));
-        button.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        button.setForeground(Color.BLACK);
-        button2.setBackground(getTransparentColor(true));
-        button2.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        button2.setForeground(Color.BLACK);
+        meaningButton.setBackground(getTransparentColor(true));
+        meaningButton.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        meaningButton.setForeground(Color.BLACK);
+        nextButton.setBackground(getTransparentColor(true));
+        nextButton.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        nextButton.setForeground(Color.BLACK);
+        previousButton.setBackground(getTransparentColor(true));
+        previousButton.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        previousButton.setForeground(Color.BLACK);
     }
     public void _frameInvisible(final boolean yes,final Color labelcolor){
 
@@ -110,13 +106,17 @@ public class Ui_Init {
         if (a) {
             label.setLocation(10,22);
             label2.setLocation(10, 70);
-            button.setLocation(25, 110);
-            button2.setLocation(25, 110);
+            label3.setLocation(10,44);
+            meaningButton.setLocation(250, 110);
+            nextButton.setLocation(250, 110);
+            previousButton.setLocation(25,110);
         } else {
             label.setLocation(10, 0);
             label2.setLocation(10, 70 - b);
-            button.setLocation(25, 110 - b);
-            button2.setLocation(25, 110 - b);
+            label3.setLocation(10,44-b);
+            meaningButton.setLocation(250, 110 - b);
+            nextButton.setLocation(250, 110 - b);
+            previousButton.setLocation(25,110-b);
         }
     }
 
