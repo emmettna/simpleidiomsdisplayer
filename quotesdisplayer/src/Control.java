@@ -61,23 +61,20 @@ public class Control extends Thread {
 
             }
         });
-        ui.alwaysOnTopButton.addItemListener(new ItemListener() {
-            @Override
-            public void itemStateChanged(ItemEvent e) {
-                if(ui.alwaysOnTopButton.isSelected()){
-                    _setAlwaysOnTop(true);
-                }
-                else{
-                    _setAlwaysOnTop(false);
-                    System.out.println("clicked");
-                }
+        ui.alwaysOnTopButton.addItemListener(e -> {
+            if(ui.alwaysOnTopButton.isSelected()){
+                _setAlwaysOnTop(true);
+            }
+            else{
+                _setAlwaysOnTop(false);
             }
         });
         ui.invisibleFrame.addMouseListener(new MouseAdapter() {
             public void mouseEntered(MouseEvent e) {
                 super.mouseExited(e);
 
-                if ((e.getX() >= -10 && e.getX() <= ui.visibleFrame.getBounds().width + 10) && (e.getY() >= -10 && e.getY() <= ui.visibleFrame.getBounds().height + 10)) {
+                if ((e.getX() >= -10 && e.getX() <= ui.visibleFrame.getBounds().width + 10)
+                        && (e.getY() >= -10 && e.getY() <= ui.visibleFrame.getBounds().height + 10)) {
                     t.stop();
                     t.start();
                     ui.visibleFrame.add(ui.panel);
@@ -90,7 +87,8 @@ public class Control extends Thread {
             @Override
             public void mouseExited(MouseEvent e) {
                 super.mouseExited(e);
-                if ((e.getX() < 0 || e.getX() > ui.invisibleFrame.getBounds().width - 10) || (e.getY() < 0 || e.getY() > ui.invisibleFrame.getBounds().height - 10)) {
+                if ((e.getX() < 0 || e.getX() > ui.invisibleFrame.getBounds().width - 10)
+                        || (e.getY() < 0 || e.getY() > ui.invisibleFrame.getBounds().height - 10)) {
                     t2.stop();
                     t2.start();
                     ui.invisibleFrame.setLocation(ui.visibleFrame.getLocation());
@@ -101,25 +99,20 @@ public class Control extends Thread {
                 }
             }
         });
-        t = new Timer(20, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (t2.isRunning()) t2.stop();
-                if (ui.visibleFrame.getBounds().height < 150) {
-                    ui.visibleFrame.setSize(ui.visibleFrame.getBounds().width, ui.visibleFrame.getBounds().height);
-                    ui.invisibleFrame.setSize(ui.visibleFrame.getBounds().width, ui.visibleFrame.getBounds().height);
-                    System.out.println("↓");
-                    ui.visibleFrame.setSize(ui.visibleFrame.getBounds().width, ui.visibleFrame.getBounds().height + 3);
-                }
-                if (ui.visibleFrame.getBounds().height >= 150) {
-                    ((Timer) e.getSource()).stop();
-                    System.out.println("Bottom");
-                }
+        t = new Timer(20, e -> {
+            if (t2.isRunning()) t2.stop();
+            if (ui.visibleFrame.getBounds().height < 150) {
+                ui.visibleFrame.setSize(ui.visibleFrame.getBounds().width, ui.visibleFrame.getBounds().height);
+                ui.invisibleFrame.setSize(ui.visibleFrame.getBounds().width, ui.visibleFrame.getBounds().height);
+                System.out.println("↓");
+                ui.visibleFrame.setSize(ui.visibleFrame.getBounds().width, ui.visibleFrame.getBounds().height + 3);
+            }
+            if (ui.visibleFrame.getBounds().height >= 150) {
+                ((Timer) e.getSource()).stop();
+                System.out.println("Bottom");
             }
         });
-        t2 = new Timer(20, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+        t2 = new Timer(20, e-> {
                 if (t.isRunning()) t.stop();
                 if (ui.invisibleFrame.getBounds().height > 100) {
                     ui.invisibleFrame.setSize(ui.invisibleFrame.getBounds().width, ui.invisibleFrame.getBounds().height);
@@ -132,12 +125,13 @@ public class Control extends Thread {
                     System.out.println("Top");
                 }
             }
-        });
+        );
     }
 
     //If statement kinda stinks We gonna get back to this later.
     private void generateIdioms() {
         int rn = ThreadLocalRandom.current().nextInt(0,fi.getList().size());
+
         if(rn%2!=0){
             rn -= 1 ;
             if(rn == rn)rn += 2;
@@ -167,7 +161,7 @@ public class Control extends Thread {
         if(queue.size()>20) queue.remove(0); queue.add(y);
     }
     private void pop(){
-        if(queue.size()>0) {queue.remove(0); System.out.println("here");}
+        if(queue.size()>0) {queue.remove(0);}
         else if(queue.size()<=0){
             ui.label.setText("404 Page Not Found");
             ui.label3.setText("20개 까지만 지원 됩니다");
@@ -175,16 +169,13 @@ public class Control extends Thread {
     }
     /* setTime button will be added soon */
     private void setIntervalTime(final int a){
-        System.out.println("got setintervaltime");
+        System.out.println("got Set Intervaltime");
 
-            t3 = new Timer(a, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.out.println("got here");
+            t3 = new Timer(a, e-> {
                 tapNextButton();
             }
 
-        });
+        );
             if(!t3.isRunning())t3.start();
 
     }

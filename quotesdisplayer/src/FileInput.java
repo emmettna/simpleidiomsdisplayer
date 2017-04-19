@@ -10,10 +10,11 @@ import java.util.Scanner;
 public class FileInput {
 
     private List<String> list;
+
     FileInput() {
         try {
             list = new ArrayList<>();
-            File filepath = new File("idioms");
+            File filepath = new File("idioms.txt");
             Scanner sc = new Scanner(filepath);
             while (sc.hasNext()) {
                 String line = sc.nextLine();
@@ -23,6 +24,7 @@ public class FileInput {
                 list.add(english);
                 list.add(korean);
             }
+            sc.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

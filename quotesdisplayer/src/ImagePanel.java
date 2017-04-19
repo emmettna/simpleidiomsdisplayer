@@ -18,6 +18,7 @@ import javax.swing.JPanel;
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
         }
         @Override
         protected void paintComponent(Graphics g) {
